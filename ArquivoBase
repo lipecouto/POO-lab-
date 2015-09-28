@@ -1,0 +1,43 @@
+using MóduloGTA;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+
+namespace WindowsFormsApplication3
+{
+    public partial class Desmanche : Form
+    {
+        public Desmanche()
+        {
+            InitializeComponent();
+        }
+
+        private void BGaragem_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                StreamReader Arq = new StreamReader(@"Garagem.txt");
+                string linha = Arq.ReadLine();
+
+                while (linha != null)
+                {
+                    BoxCarros.Items.Add(linha);
+                    linha = Arq.ReadLine();
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Arquivo não encontrado");
+            }
+        }
+    }
+}
